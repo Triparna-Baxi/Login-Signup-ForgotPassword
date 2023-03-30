@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import EmailVerify from "./components/EmailVerify";
 import ForgotPassword from "./components/ForgotPassword";
 import PasswordReset from "./components/PasswordReset";
+import './App.css';
 
 function App() {
 	const user = localStorage.getItem("token");

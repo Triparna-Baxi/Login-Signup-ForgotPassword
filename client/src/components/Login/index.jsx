@@ -1,11 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
+
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
-const Login = () => {
+// import {gapi} from "gapi-script";
+// import GoogleLogin from "react-google-login";
+//import App from "../App";
+
+function Login(){
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -34,7 +40,7 @@ const Login = () => {
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Your Account</h1>
+						<h1>Login</h1>
 						<input
 							type="email"
 							placeholder="Email"
@@ -53,23 +59,29 @@ const Login = () => {
 							required
 							className={styles.input}
 						/>
-						<Link to="/forgot-password" style={{alignSelf: "flex-start"}}>
-							<p style={{padding: "0 15px"}}>Forgot Password?</p>
-					</Link>
-						{error && <div className={styles.error_msg}>{error}</div>}
+						
 						<button type="submit" className={styles.green_btn}>
 							Sign In
 						</button>
+						<Link to="/forgot-password" style={{alignItems: "center", fontFamily: 'Montserrat',
+							fontStyle: "normal",
+							fontweight: 400,
+							fontsize: 14,
+							lineheight: 24}}>
+							<p style={{padding: "0 15px"}}>Forgot Your Password?</p>
+						</Link>
+						{error && <div className={styles.error_msg}>{error}</div>}
+						
+						<h2>Don't have an account?</h2>
+						<Link to="/signup">
+							<button type="button" className={styles.green_btn}>
+								Sign Up
+							</button>
+						</Link>
+						
 					</form>
 				</div>
-				<div className={styles.right}>
-					<h1>New Here ?</h1>
-					<Link to="/signup">
-						<button type="button" className={styles.white_btn}>
-							Sign Up
-						</button>
-					</Link>
-				</div>
+				
 			</div>
 		</div>
 	);
